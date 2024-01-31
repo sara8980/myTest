@@ -1,13 +1,7 @@
-FROM python:3.7
-WORKDIR /app
+# my-image
 
-RUN apt update
-RUN apt install -y curl
-# download certificate
-RUN curl -sL https://netfree.link/dl/unix-ca.sh | sh
-# pip config
-RUN pip config set global.cert /usr/lib/ssl/certs/ca-certificates.crt
+## build 
+docker build -t convertor .
 
-COPY . /app
-RUN pip install -r requirements.txt
-CMD ["python", "./convert_image_to_pdf.py"]
+## run 
+docker run -it --name myContainer -e PDF_Sara -v $PWD/images:/app/images -v $PWD/output:/app/output convertor images output
