@@ -1,2 +1,1 @@
-This is a requirements
 img2pdf==0.4.0
